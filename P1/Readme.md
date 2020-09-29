@@ -1,11 +1,14 @@
 # How to use this code
-Two CNN models (i.e. VGG16 and ResNet-50) are implemented in vgg16.py and 'resnet.py', respectively.
+Two CNN models (i.e. [VGG16](https://arxiv.org/abs/1409.1556)[1] and [ResNet-50](https://arxiv.org/abs/1512.03385)[2]) are implemented by 'vgg16.py' and 'resnet.py', respectively.
 
 The following examples demonstrate how to load CNN models (pretrained on ImageNet) using 'vgg16.py' and 'resnet.py', modify their achitectures and fine-tuning model weights for image classification
 
 ## VGG16 model
 ```
 from vgg16 import vgg16
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, Flatten, AveragePooling2D,Dropout
+
 baseModel = vgg16(224, 224, 3, 3, include_top=False)
 # construct the head of the model that will be placed on top of the
 # the base model
@@ -28,8 +31,11 @@ model.summary()
 ```    
 ## ResNet-50 model
 ```
-baseModel = ResNet50(weights="imagenet", include_top=False,
-            input_tensor=Input(shape=(224, 224, 3)))
+from resnet import ResNet50
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, Flatten, AveragePooling2D,Dropout
+
+baseModel = ResNet50(include_top=False, input_tensor=Input(shape=(224, 224, 3)))
 # construct the head of the model that will be placed on top of the
 # the base model
 headModel = baseModel.output
@@ -46,3 +52,7 @@ model = Model(inputs=baseModel.input, outputs=headModel)
 model.summary()
 ```
 In the above examples, ```num_classes``` is the number of image classes
+
+## Reference
+1. Simonyan K., Zisserman A. Very Deep Convolutional Networks for Large-Scale Image Recognition. International Conference on Learning Representations(ICLR), 2015.
+2. He K., Zhang X., Ren S., Sun J. Deep Residual Learning for Image Recognition. IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 770-778, 2016.
