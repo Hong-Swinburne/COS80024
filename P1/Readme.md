@@ -53,7 +53,7 @@ model.summary()
 ```
 In the above examples, ```num_classes``` is the number of image classes
 
-**NOTE:** To make this code works with 'resnet.py', you need to install Tensorflow-gpu 2.2.0 or Tensorflow 2.2.0
+## **NOTE:** To make this code works with 'resnet.py', you need to install **tensorflow-gpu 2.2.0** or **tensorflow 2.2.0**
 ## Reference
 1. Simonyan K., Zisserman A. Very Deep Convolutional Networks for Large-Scale Image Recognition. International Conference on Learning Representations(ICLR), 2015.
 2. He K., Zhang X., Ren S., Sun J. Deep Residual Learning for Image Recognition. IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 770-778, 2016.
