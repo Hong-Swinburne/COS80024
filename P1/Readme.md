@@ -1,8 +1,7 @@
 # How to use this code
 Two CNN models (i.e. [VGG16](https://arxiv.org/abs/1409.1556)[1] and [ResNet-50](https://arxiv.org/abs/1512.03385)[2]) are implemented by 'vgg16.py' and 'resnet.py', respectively.
 
-The following examples demonstrate how to load CNN models (pretrained on ImageNet) using 'vgg16.py' and 'resnet.py', modify their achitectures and fine-tuning model weights for image classification
-
+The following examples demonstrate how to load CNN models (pretrained on ImageNet) using 'vgg16.py' and 'resnet.py', modify their achitectures for fine-tuning of model weights
 ## VGG16 model
 ```
 from vgg16 import vgg16
@@ -53,7 +52,7 @@ model.summary()
 ```
 In the above examples, ```num_classes``` is the number of image classes
 
-**NOTE:** To make this code works with 'resnet.py', you need to install **tensorflow-gpu 2.2.0** or **tensorflow 2.2.0**
+**NOTE:** To make this code work with 'resnet.py', you need to install **tensorflow-gpu 2.2.0** or **tensorflow 2.2.0**
 ## Reference
 1. Simonyan K., Zisserman A. Very Deep Convolutional Networks for Large-Scale Image Recognition. International Conference on Learning Representations(ICLR), 2015.
 2. He K., Zhang X., Ren S., Sun J. Deep Residual Learning for Image Recognition. IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 770-778, 2016.
