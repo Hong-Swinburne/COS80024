@@ -1,7 +1,7 @@
 # How to use this code
 Two CNN models (i.e. [VGG16](https://arxiv.org/abs/1409.1556)[1] and [AlexNet](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)[2]) are implemented by 'vgg16.py' and 'alexnet.py', respectively.
 
-The following examples demonstrate how to load CNN models using 'vgg16.py' and 'alexnet.py' and modify their achitectures for training.
+The following examples demonstrate how to load CNN models using 'vgg16.py' and 'alexnet.py' and modify their achitectures (if neccessary) for training.
 ## VGG16 model
 ```
 from vgg16 import vgg16
