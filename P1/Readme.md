@@ -1,34 +1,8 @@
 # How to use this code
-Two CNN models (i.e. [VGG16](https://arxiv.org/abs/1409.1556)[1] and [ResNet-50](https://arxiv.org/abs/1512.03385)[2]) are implemented by 'vgg16.py' and 'resnet.py', respectively.
+The CNN model of [ResNet-50](https://arxiv.org/abs/1512.03385)[1]) is implemented by 'resnet.py'.
 
-The following examples demonstrate how to load CNN models (pretrained on ImageNet) using 'vgg16.py' and 'resnet.py', modify their achitectures for fine-tuning of model weights
-## VGG16 model
-```
-from vgg16 import vgg16
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Dense, Flatten, AveragePooling2D,Dropout
+The following example demonstrates how to load CNN model (pretrained on ImageNet) using 'resnet.py', modify its achitecture for fine-tuning of model weights
 
-baseModel = vgg16(224, 224, 3, 3, include_top=False)
-# construct the head of the model that will be placed on top of the
-# the base model
-headModel = baseModel.output
-headModel = AveragePooling2D(pool_size=(4, 4))(headModel)
-headModel = Flatten(name='flatten')(headModel)
-headModel = Dense(4096, activation='relu', name='fc1')(headModel)
-headModel = Dense(4096, activation='relu', name='fc2')(headModel)
-headModel = Dropout(0.5)(headModel)
-headModel = Dense(num_classes, activation='softmax')(headModel)
-# place the head FC model on top of the base model (this will become
-# the actual model we will train)
-model = Model(inputs=baseModel.input, outputs=headModel)
-# loop over all layers in the base model and freeze them so they will
-# *not* be updated during the first training process
-for layer in baseModel.layers:
-    layer.trainable = False
-    
-model.summary()
-```    
-## ResNet-50 model
 ```
 from resnet import ResNet50
 from tensorflow.keras.models import Model
@@ -52,7 +26,6 @@ model.summary()
 ```
 In the above examples, ```num_classes``` is the number of image classes
 
-**NOTE:** To make this code work with 'resnet.py', you need to install **tensorflow-gpu 2.2.0** or **tensorflow 2.2.0**
+**NOTE:** To make this code work, you need to install **tensorflow-gpu 2.2.0** or **tensorflow 2.2.0**
 ## Reference
-1. Simonyan K., Zisserman A. Very Deep Convolutional Networks for Large-Scale Image Recognition. International Conference on Learning Representations(ICLR), 2015.
-2. He K., Zhang X., Ren S., Sun J. Deep Residual Learning for Image Recognition. IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 770-778, 2016.
+1. He K., Zhang X., Ren S., Sun J. Deep Residual Learning for Image Recognition. IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 770-778, 2016.
